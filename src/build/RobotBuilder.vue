@@ -52,23 +52,6 @@
         position="bottom"
         @partSelected="part => selectedRobot.base=part" />
     </div>
-    <div>
-      <h1>Cart</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Robot</th>
-            <th class="cost">Cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="robot in cart" :key="robot.id">
-             <td>{{ robot.head.title}}</td>
-             <td>{{ robot.cost }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </template>
 

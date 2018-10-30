@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div v-if="availableParts" class="content">
     <div class="preview">
       <CollapsibleSection>
       </CollapsibleSection>
@@ -34,7 +34,7 @@
         @partSelected="part => selectedRobot.leftArm=part" />
       <PartSelector
         :parts="availableParts.torsos"
-        position="center" 
+        position="center"
         @partSelected="part => selectedRobot.torso=part" />
       <PartSelector
         :parts="availableParts.arms"
@@ -51,13 +51,15 @@
 </template>
 
 <script>
-import availableParts from '../data/parts';
 import createdHookMixin from './created-hook-mixin';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 export default {
   name: 'RobotBuilder',
+  created() {
+    this.$store.dispatch('getParts');
+  },
   beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
@@ -69,7 +71,6 @@ export default {
   components: { PartSelector, CollapsibleSection },
   data() {
     return {
-      availableParts,
       addedToCart: false,
       cart: [],
       selectedRobot: {
@@ -85,6 +86,9 @@ export default {
     // Using arrow functions here will lose the context of the instance
     headBorderStyle() {
       return { border: this.selectedRobot.head.onSale ? '3px solid green' : '3px solid #aaa' };
+    },
+    availableParts() {
+      return this.$store.state.parts;
     },
   },
   mixins: [createdHookMixin],

@@ -53,12 +53,12 @@
 export default {
   name: 'Cart',
   computed: {
-      cart() {
-          return this.$store.state.cart;
-      },
-      cartSaleItems() {
-          return this.$store.getters.cartSaleItems;
-      }
+    cart() {
+      return this.$store.state.cart;
+    },
+    cartSaleItems() {
+      return this.$store.getters.cartSaleItems;
+    },
   },
 };
 </script>

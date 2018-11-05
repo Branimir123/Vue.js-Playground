@@ -5,12 +5,14 @@ export default {
   state: {
     cart: [],
     parts: null,
+    foo: 'robots-foo',
   },
   actions: {
-    getParts({ commit }) {
+    getParts(arg) {
+      console.log('action', arg);
       axios.get('/api/parts')
         .then((res) => {
-          commit('updateParts', res.data);
+          arg.commit('updateParts', res.data);
         })
         .catch((err) => {
           console.error('Error fetching data about parts', err);
@@ -28,6 +30,9 @@ export default {
   getters: {
     cartSaleItems(state) {
       return state.cart.filter(item => item.head.onSale);
+    },
+    foo(state) {
+      return `robots-getter/${state.foo}`;
     },
   },
   mutations: {

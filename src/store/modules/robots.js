@@ -8,11 +8,10 @@ export default {
     foo: 'robots-foo',
   },
   actions: {
-    getParts(arg) {
-      console.log('action', arg);
+    getParts({ commit }) {
       axios.get('/api/parts')
         .then((res) => {
-          arg.commit('updateParts', res.data);
+          commit('updateParts', res.data);
         })
         .catch((err) => {
           console.error('Error fetching data about parts', err);

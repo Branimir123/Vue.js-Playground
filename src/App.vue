@@ -60,7 +60,8 @@ export default {
     // },
 
     // ...mapState('users', { usersFoo: 'foo' }),
-    // The above is equivalent to below: AND works ONLY for namespaced state modules (users is not one of them) so it should be with function syntax
+    // The above is equivalent to below: AND works ONLY for namespaced state modules
+    // (users is not one of them) so it should be with function syntax
 
     // usersFoo() {
     //   return this.$store.state.users.foo;

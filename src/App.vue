@@ -50,31 +50,9 @@ export default {
       rootFoo: 'foo',
       usersFoo: state => state.users.foo,
     }),
-    // The above is equivalent to the below:
-
-    // rootFoo() {
-    //   return this.$store.state.foo;
-    // },
-    // robotsFoo() {
-    //   return this.$store.state.robots.foo;
-    // },
-
-    // ...mapState('users', { usersFoo: 'foo' }),
-    // The above is equivalent to below: AND works ONLY for namespaced state modules
-    // (users is not one of them) so it should be with function syntax
-
-    // usersFoo() {
-    //   return this.$store.state.users.foo;
-    // },
     ...mapState('robots', { robotsFoo: 'foo' }),
     ...mapGetters({ rootGetterFoo: 'foo' }),
     ...mapGetters('robots', { robotsGetterFoo: 'foo' }),
-    // rootGetterFoo() {
-    //   return this.$store.getters.foo;
-    // },
-    // robotsGetterFoo() {
-    //   return this.$store.getters['robots/foo'];
-    // },
     cart() {
       return this.$store.state.robots.cart;
     },

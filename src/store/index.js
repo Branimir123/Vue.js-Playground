@@ -14,8 +14,5 @@ export default new Vuex.Store({
     users,
   },
   getters: {
-    foo(state) {
-      return `root-getter/${state.foo}`;
-    },
   },
 });
